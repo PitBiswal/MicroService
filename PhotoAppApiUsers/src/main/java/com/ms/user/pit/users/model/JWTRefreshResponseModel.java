@@ -5,8 +5,6 @@ public class JWTRefreshResponseModel {
 	private String expired_access_token;
 	private long expires_in;
 	private String refresh_token;
-	private String validToken;
-	private String jwtValidToken;
 	
 	
 	public String getExpired_access_token() {
@@ -33,18 +31,7 @@ public class JWTRefreshResponseModel {
 	public void setAuth_type(String auth_type) {
 		this.auth_type = auth_type;
 	}
-	public String getValidToken() {
-		return validToken;
-	}
-	public void setValidToken(String validToken) {
-		this.validToken = validToken;
-	}
-	public String getJwtValidToken() {
-		return jwtValidToken;
-	}
-	public void setJwtValidToken(String jwtValidToken) {
-		this.jwtValidToken = jwtValidToken;
-	}
+	
 
 	
 }

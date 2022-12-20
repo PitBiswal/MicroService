@@ -79,8 +79,7 @@ public class UserController {
 		 claims = Jwts.parser().setSigningKey(env.getProperty("token.secret")).parseClaimsJws(jwttoken).getBody();
 		}catch (SignatureException | MalformedJwtException | UnsupportedJwtException | IllegalArgumentException ex) {
 			
-			 returnValue.setValidToken("Not A Valid Token");
-			 return  ResponseEntity.status(HttpStatus.CREATED).body(returnValue);
+			 return  null;
 		}
 		catch (ExpiredJwtException ex) {
 			claims=ex.getClaims();
@@ -95,10 +94,8 @@ public class UserController {
 			 returnValue.setRefresh_token(refreshToken);
 			 return  ResponseEntity.status(HttpStatus.CREATED).body(returnValue);
 		}
-		 returnValue.setAuth_type("Bearer");
-		 returnValue.setJwtValidToken(jwttoken);
-		 returnValue.setValidToken("Token Has Not Expired");
-		 return  ResponseEntity.status(HttpStatus.CREATED).body(returnValue);
+		
+		 return  null;
 		
 		
 		

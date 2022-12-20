@@ -17,6 +17,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.ms.user.pit.constant.AuthenticationConfigConstants;
 import com.ms.user.pit.service.UsersService;
 import com.ms.user.pit.shared.UserDto;
 import com.ms.user.pit.users.model.LoginRequestModel;
@@ -76,6 +77,11 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
           
           res.addHeader("token", token);
           res.addHeader("userId", userDetails.getUserId());
+          res.setContentType("application/json");
+          res.setCharacterEncoding("UTF-8");
+          res.getWriter().write(
+                  "{\"" + AuthenticationConfigConstants.HEADER_STRING + "\":\"" + token + "\"}"
+              );
     } 
   
 	/*
