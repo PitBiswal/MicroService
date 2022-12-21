@@ -37,3 +37,8 @@ Login:
 "email":"sstest@test.com",
 "password":"87654321"
 }
+# JWT Refresh Token End Point
+http://localhost:8011/users-ws/users/refresh/token
+input :expired jwt token must be set in header section against  Autherization Header
+Auth Type:Bearer
+Out Put:generate new token after refresh with other details in the body section 
