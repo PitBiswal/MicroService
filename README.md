@@ -16,8 +16,7 @@ To Get User Details:http://localhost:8011/users-ws/users/userDetails
 #In this project User can check status by using valid token generated .
 #H2 in Memory DB used for theis requirement
 #Token Will be Expired afer 1 min
-# Refresh Token Has not Implemented
-#Every time application Stop/Start records will removed from Memory since we are using H2 in Memory DB
+
 
 Testing Steps:
 First Run PhotoAppDiscoveryService Ws
@@ -41,10 +40,14 @@ Login:
 }
 User Ws End Points:
 User Creation:http://localhost:8011/users-ws/users/createUser
-User Login:http://localhost:8011/users-ws/users/login 
+
+User Default Login:http://localhost:8011/users-ws/users/login 
+User Authentication:http://localhost:8011/users-ws/users/authenticateUser 
+
 User Status Check:http://localhost:8011/users-ws/users/port/check
 To Refresh Token :http://localhost:8011/users-ws/users/refresh/token
 To Get User Details:http://localhost:8011/users-ws/users/userDetails
+
 # JWT Refresh Token End Point
 http://localhost:8011/users-ws/users/refresh/token
 input :expired jwt token must be set in header section against  Autherization Header
