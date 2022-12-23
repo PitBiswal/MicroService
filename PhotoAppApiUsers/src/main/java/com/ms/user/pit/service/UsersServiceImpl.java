@@ -40,11 +40,25 @@ public class UsersServiceImpl implements UsersService {
 	
 	Logger logger = LoggerFactory.getLogger(this.getClass());
 	
+	
 	@Override
-	public UserDto createUser(UserDto userDetails) {
+	public int countUser(String email)  {
+		int count=0;
+		UserEntity userEntity= usersRepository.findByEmail(email);
+		if(userEntity!=null)
+			count=1;
+		else
+			count=0;
+ 
+		return count;
+	}
+	
+	@Override
+	public UserDto createUser(UserDto userDetails)  {
 		
 		userDetails.setUserId(UUID.randomUUID().toString());
-		userDetails.setEncryptedPassword(bCryptPasswordEncoder.encode(userDetails.getPassword()));		
+		userDetails.setEncryptedPassword(bCryptPasswordEncoder.encode(userDetails.getPassword()));
+		
 		ModelMapper modelMapper = new ModelMapper(); 
 		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 		
@@ -76,6 +90,30 @@ public class UsersServiceImpl implements UsersService {
 		return new ModelMapper().map(userEntity, UserDto.class);
 	}
 
-
-
-}
+	@Override
+	public UserDto getUserDetailsByEmailCustom(String email, String pwd) {
+		// TODO Auto-generated method stub
+		UserEntity userEntity = usersRepository.findByEmail(email);
+		if(userEntity == null) {
+			return null;
+		}
+		if(bCryptPasswordEncoder.matches(pwd,userEntity.getEncryptedPassword())) {
+		
+		return new ModelMapper().map(userEntity, UserDto.class);
+		
+		}else{
+			return null;
+		}
+	}
+	
+	@Override
+	public UserDto getUserDetails(String email) {
+		// TODO Auto-generated method stub
+		UserEntity userEntity = usersRepository.findByEmail(email);
+		if(userEntity == null) {
+			return null;
+		}
+		
+		return new ModelMapper().map(userEntity, UserDto.class);
+	}
+	}

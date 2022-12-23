@@ -1,10 +1,9 @@
 package com.ms.user.pit.users.model;
 
-public class CreateUserResponseModel {
+public class UserDetailsResponseModel {
 	private String firstName;
 	private String lastName;
 	private String email;
-	private String userStaus;
 
 	
 
@@ -33,12 +32,6 @@ public class CreateUserResponseModel {
 	}
 
 
-	public String getUserStaus() {
-		return userStaus;
-	}
 
-	public void setUserStaus(String userStaus) {
-		this.userStaus = userStaus;
-	}
 
 }
