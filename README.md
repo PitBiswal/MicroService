@@ -5,9 +5,11 @@ Account Ws :http://localhost:9082/account/status/check
 
 
 User Ws End Points:
-User Creation:http://localhost:8082/users-ws/users 
-User Login:http://localhost:8082/users-ws/users/login 
-User Status Check:http://localhost:8082/users-ws/users/status/check
+User Creation:http://localhost:8011/users-ws/users/createUser
+User Login:http://localhost:8011/users-ws/users/login 
+User Status Check:http://localhost:8011/users-ws/users/port/check
+To Refresh Token :http://localhost:8011/users-ws/users/refresh/token
+To Get User Details:http://localhost:8011/users-ws/users/userDetails
 
 #Once User created in the system and user is authenticated then JWT token will create.
 #By Using JWT token user can do any tranasction 
@@ -37,6 +39,12 @@ Login:
 "email":"sstest@test.com",
 "password":"87654321"
 }
+User Ws End Points:
+User Creation:http://localhost:8011/users-ws/users/createUser
+User Login:http://localhost:8011/users-ws/users/login 
+User Status Check:http://localhost:8011/users-ws/users/port/check
+To Refresh Token :http://localhost:8011/users-ws/users/refresh/token
+To Get User Details:http://localhost:8011/users-ws/users/userDetails
 # JWT Refresh Token End Point
 http://localhost:8011/users-ws/users/refresh/token
 input :expired jwt token must be set in header section against  Autherization Header
